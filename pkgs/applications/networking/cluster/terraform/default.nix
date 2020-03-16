@@ -118,6 +118,13 @@ in rec {
     passthru = { inherit plugins; };
   });
 
+  terraform_0_12_20 = pluggable (generic {
+    version = "0.12.20";
+    sha256 = "1lr2gfk5dmj6rhv5rvzn3fggb34za73ryjy0vdzx4kf3qj12r0wz";
+    patches = [ ./provider-path.patch ];
+    passthru = { inherit plugins; };
+  });
+
   # Tests that the plugins are being used. Terraform looks at the specific
   # file pattern and if the plugin is not found it will try to download it
   # from the Internet. With sandboxing enable this test will fail if that is
